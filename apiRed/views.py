@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
-from keras.models import load_model
-from keras.preprocessing import image
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
 import json
 from tensorflow import Graph
 from tensorflow.compat.v1 import Session
@@ -10,7 +10,7 @@ from io import BytesIO
 from six.moves import urllib
 
 img_height, img_width=224,224
-with open('./models/imagenet_classes.json','r') as f:
+with open('./models/modelo.json','r') as f:
     labelInfo=f.read()
 
 
@@ -21,7 +21,7 @@ model_graph = Graph()
 with model_graph.as_default():
     tf_session = Session()
     with tf_session.as_default():
-        model=load_model('./models/MobileNetModelImagenet.h5')
+        model=load_model('./models/pesos.h5')
 
 
 def index(request):
