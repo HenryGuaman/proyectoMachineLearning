@@ -4,13 +4,16 @@ from django.core.files.storage import FileSystemStorage
 from keras.models import load_model
 from keras.preprocessing import image
 import json
-from tensorflow import Graph, Session
+from tensorflow import Graph
+from tensorflow.compat.v1 import Session
 from io import BytesIO
 from six.moves import urllib
 
 img_height, img_width=224,224
 with open('./models/imagenet_classes.json','r') as f:
     labelInfo=f.read()
+
+
 
 labelInfo=json.loads(labelInfo)
 
